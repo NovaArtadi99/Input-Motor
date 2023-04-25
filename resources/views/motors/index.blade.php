@@ -35,7 +35,8 @@
                         <td>{{ $motor->cc }}</td>
                         <td>{{ $motor->harga_sewa }}</td>
                         <td>{{ $motor->status }}</td>
-                        <td>{{ $motor->gambar_motor }}</td>
+                        {{-- <td>{{ $motor->gambar_motor }}</td> --}}
+                        <td><img src="{{ asset('storage/' . $motor->gambar_motor) }}" alt="{{ $motor->gambar_motor }}" width="100"></td>
                         <td>{{ $motor->tgl_catat }}</td>
                         <td>
                             <a href="{{ route('motors.edit', $motor->plat_motor) }}" class="btn btn-primary">Edit</a>

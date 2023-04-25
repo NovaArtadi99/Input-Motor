@@ -41,10 +41,32 @@
 
                             <div class="form-group row">
                                 <label for="warna" class="col-md-4 col-form-label text-md-right">{{ __('Warna') }}</label>
-
                                 <div class="col-md-6">
-                                    <input id="warna" type="text" class="form-control @error('warna') is-invalid @enderror" name="warna" value="{{ old('warna') }}" required autocomplete="warna">
-
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="warna" id="warna" value="Red">
+                                        <label class="form-check-label" for="color_red">Merah</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="warna" id="warna" value="Green">
+                                        <label class="form-check-label" for="color_green">Hijau</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="warna" id="warna" value="Blue">
+                                        <label class="form-check-label" for="color_blue">Biru</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="warna" id="warna" value="Hitam">
+                                        <label class="form-check-label" for="color_red">Hitam</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="warna" id="warna" value="Putih">
+                                        <label class="form-check-label" for="color_green">Putih</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="warna" id="warna" value="Kuning>
+                                        <label class="form-check-label" for="color_blue">Kuning</label>
+                                    </div>
+                            
                                     @error('warna')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -55,10 +77,17 @@
 
                             <div class="form-group row">
                                 <label for="tipe" class="col-md-4 col-form-label text-md-right">{{ __('Tipe') }}</label>
-
                                 <div class="col-md-6">
-                                    <input id="tipe" type="text" class="form-control @error('tipe') is-invalid @enderror" name="tipe" value="{{ old('tipe') }}" required autocomplete="tipe">
-
+                                    <select class="form-control" id="tipe" name="tipe">
+                                        <option value="">Pilih tipe motor</option>
+                                        <option value="Honda">Honda</option>
+                                        <option value="Yamaha">Yamaha</option>
+                                        <option value="Suzuki">Suzuki</option>
+                                        <option value="Kawasaki">Kawasaki</option>
+                                        <option value="Moge">Moge</option>
+                                        <option value="Piagio">Piagio</option>
+                                    </select>
+                            
                                     @error('tipe')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -66,7 +95,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="form-group row">
                                 <label for="tahun" class="col-md-4 col-form-label text-md-right">{{ __('Tahun') }}</label>
 
@@ -158,6 +186,9 @@
                             <label for="gambar_motor" class="col-md-4 col-form-label text-md-right">{{ __('Gambar Motor') }}</label>
 
                             <div class="col-md-6">
+                                @if (isset($motor) && $motor->gambar_motor!='')
+                                    <img src="{{asset('storage/'.$motor->gambar_motor)}}" class="mx-auto h-12 w-12 text-gray-400 rounded" alt="">
+                                @endif
                                 <input id="gambar_motor" type="file" class="form-control-file @error('gambar_motor') is-invalid @enderror" name="gambar_motor" required>
 
                                 @error('gambar_motor')
@@ -172,7 +203,8 @@
                             <label for="tgl_catat" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Catat') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tgl_catat" type="date" class="form-control @error('tgl_catat') is-invalid @enderror" name="tgl_catat" value="{{ old('tgl_catat') }}" required autocomplete="tgl_catat">
+                                {{-- <input type="date" id="tanggal" name="tanggal" value="{{ date('Y-m-d') }}"> --}}
+                                <input id="tgl_catat" type="date" class="form-control @error('tgl_catat') is-invalid @enderror" name="tgl_catat" value="{{ date('Y-m-d') }}" required autocomplete="tgl_catat">
 
                                 @error('tgl_catat')
                                     <span class="invalid-feedback" role="alert">
@@ -199,8 +231,3 @@
     </div>
 </div>
 @endsection
-
-
-
-
-
